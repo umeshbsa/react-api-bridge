@@ -30,12 +30,5 @@
             android:configChanges="screenLayout"
             android:exported="true"
             android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".PostActivity"
-            android:configChanges="screenLayout"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-
     </application>
 </manifest>
