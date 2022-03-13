@@ -7,25 +7,40 @@ import com.facebook.react.ReactActivity
 import android.widget.TextView
 import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEmitter
 import androidx.annotation.CallSuper
+import androidx.viewbinding.ViewBinding
+import com.demo.databinding.ActivityDashboardBinding
+import com.demo.databinding.ActivitySigninBinding
 import java.lang.Exception
 
 /**
  * Activity to start from React Native JavaScript, triggered via
  */
-class DashboardActivity : ReactActivity() {
-    @CallSuper
+class DashboardActivity : BaseActivity() {
+
+    private lateinit var ui: ActivityDashboardBinding
+
+    override fun layoutRes(): ViewBinding {
+        return ActivityDashboardBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboard)
+        ui = binding as ActivityDashboardBinding
+
         val i = intent
         val bundle = i.extras
         if (bundle != null) {
             val data = bundle.getString("DATA")
-            val tvData = findViewById<View>(R.id.tvData) as TextView
-            tvData.text = "DATA $data"
+
+            ui.tvData.text = "DATA $data"
         }
-        findViewById<View>(R.id.go_back_button1).setOnClickListener { onBackPressed() }
-        findViewById<View>(R.id.go_back_button2).setOnClickListener {
+
+        ui.goBackButton1.setOnClickListener {
+            launchActivity(SignInActivity::class.java)
+        }
+
+
+        ui.goBackButton2.setOnClickListener {
             try {
                 reactInstanceManager.currentReactContext
                     ?.getJSModule(RCTDeviceEventEmitter::class.java)
@@ -35,6 +50,7 @@ class DashboardActivity : ReactActivity() {
             }
             onBackPressed()
         }
+
     }
 
 }
