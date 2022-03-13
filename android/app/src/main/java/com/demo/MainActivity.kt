@@ -1,36 +1,12 @@
 package com.demo
 
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
-import com.facebook.react.bridge.ReactMethod
-import android.app.Activity
 import android.os.Bundle
-import android.content.Intent
-import com.demo.DashboardActivity
-import com.demo.AppUtils
-import com.facebook.react.ReactPackage
-import com.facebook.react.bridge.NativeModule
-import com.demo.ActivityStarterModule
 import com.facebook.react.ReactActivity
-import com.demo.R
-import android.widget.TextView
-import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEmitter
-import android.widget.EditText
 import com.facebook.react.ReactActivityDelegate
-import com.demo.MainApplication
-import com.facebook.react.ReactNativeHost
-import com.facebook.react.ReactInstanceManager
-import com.facebook.react.devsupport.interfaces.DevSupportManager
-import com.facebook.react.devsupport.interfaces.DevOptionHandler
 import android.widget.Toast
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationManagerCompat
-import com.demo.MainActivity
-import com.facebook.react.ReactApplication
-import com.demo.ActivityStarterReactPackage
-import com.facebook.react.shell.MainReactPackage
-import com.facebook.soloader.SoLoader
 
 class MainActivity : ReactActivity() {
     /**
@@ -62,7 +38,7 @@ class MainActivity : ReactActivity() {
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val application = application as MainApplication
+        val application = application as App
         val reactNativeHost = application.reactNativeHost
         val reactInstanceManager = reactNativeHost!!.reactInstanceManager
         val devSupportManager = reactInstanceManager.devSupportManager
